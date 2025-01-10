@@ -5,6 +5,9 @@ import hanghae.domain.common.entity.BaseEntity;
 import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "movies")
 @NoArgsConstructor
@@ -29,4 +32,7 @@ public class MovieEntity extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     private Genre genre;
+
+    @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ShowtimeEntity> showtime = new ArrayList<>();
 }

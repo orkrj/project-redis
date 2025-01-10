@@ -20,8 +20,8 @@ public class ShowtimeEntity {
     @Convert(converter = ScheduleConverter.class)
     private Schedule schedule;
 
-    @OneToOne
-    @JoinColumn(name = "movie_id")
+    @ManyToOne
+    @JoinColumn(name = "movie_id", nullable = false)
     private MovieEntity movie;
 
     @OneToMany(mappedBy = "showtime", cascade = CascadeType.ALL, orphanRemoval = true)
