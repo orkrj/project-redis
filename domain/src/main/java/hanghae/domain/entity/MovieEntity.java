@@ -1,2 +1,32 @@
-package hanghae.domain.entity;public class MovieEntity {
+package hanghae.domain.entity;
+
+import hanghae.domain.common.movie.*;
+import hanghae.domain.common.entity.BaseEntity;
+import jakarta.persistence.*;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Table(name = "movies")
+@NoArgsConstructor
+public class MovieEntity extends BaseEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long movieId;
+
+    private String title;
+
+    @Enumerated(EnumType.STRING)
+    private AgeRating ageRating;
+
+    @Convert(converter = ReleaseDateConverter.class)
+    private ReleaseDate releaseDate;
+
+    private String thumbnailUrl;
+
+    @Convert(converter = RunningTimeConverter.class)
+    private RunningTime runningTime;
+
+    @Enumerated(EnumType.STRING)
+    private Genre genre;
 }
