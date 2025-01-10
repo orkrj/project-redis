@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
 
 @Entity
+@Table(name = "theaters")
 @NoArgsConstructor
 public class TheaterEntity {
 
