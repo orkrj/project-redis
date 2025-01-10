@@ -8,12 +8,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Showtimes {
+public class ShowtimeCollection {
 
-    private final List<Showtime> showtimes;
+    private final List<Showtime> showtimeList;
 
-    public Showtimes() {
-        this.showtimes = new ArrayList<>();
+    public ShowtimeCollection() {
+        this.showtimeList = new ArrayList<>();
     }
 
     public void add(Showtime showtime) {
@@ -21,27 +21,27 @@ public class Showtimes {
         isDuplicate(showtime);
         isOverlapped(showtime);
 
-        showtimes.add(showtime);
+        showtimeList.add(showtime);
     }
 
     public void remove(Showtime showtime) {
         ensureShowtimeExists(showtime);
 
-        showtimes.remove(showtime);
+        showtimeList.remove(showtime);
     }
 
     public List<Showtime> getShowtimesAsList() {
-        return Collections.unmodifiableList(showtimes);
+        return Collections.unmodifiableList(showtimeList);
     }
 
     private void isDuplicate(Showtime showtime) {
-        if (showtimes.contains(showtime)) {
+        if (showtimeList.contains(showtime)) {
             throw new InvalidShowtimesException("showtime already exists");
         }
     }
 
     private void isOverlapped(Showtime showtime) {
-        for (Showtime existing : showtimes) {
+        for (Showtime existing : showtimeList) {
             isTargetStartTimeBeforeExistingEndTime(showtime, existing);
             isTargetEndTimeAfterExistingStartTime(showtime, existing);
         }
@@ -79,7 +79,7 @@ public class Showtimes {
     }
 
     private void ensureShowtimeExists(Showtime showtime) {
-        if (!showtimes.contains(showtime)) {
+        if (!showtimeList.contains(showtime)) {
             throw new InvalidShowtimesException(
                     "there are no showtime in showtimes"
             );

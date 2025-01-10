@@ -1,6 +1,6 @@
 package hanghae.domain.domain;
 
-import hanghae.domain.common.theater.Showtimes;
+import hanghae.domain.common.theater.ShowtimeCollection;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
@@ -8,9 +8,9 @@ public class Theater {
 
     private String theaterName;
 
-    private Showtimes showtimes;
+    private ShowtimeCollection showtimeCollection;
 
     public static Theater of(String theaterName) {
-        return new Theater(theaterName, new Showtimes());
+        return new Theater(theaterName, new ShowtimeCollection());
     }
 }
