@@ -15,6 +15,10 @@ public class ReleaseDate {
         this.date = LocalDate.of(year, month, day);
     }
 
+    public ReleaseDate(LocalDate date) {
+        this.date = date;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
