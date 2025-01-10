@@ -13,10 +13,10 @@ public class TheaterShowtimeEntity {
     private Long theaterShowtimeId;
 
     @ManyToOne
-    @JoinColumn(name = "theater_id")
+    @JoinColumn(name = "theater_id", nullable = false)
     private TheaterEntity theater;
 
     @ManyToOne
-    @JoinColumn(name = "showtime_id")
+    @JoinColumn(name = "showtime_id", nullable = false)
     private ShowtimeEntity showtime;
 }

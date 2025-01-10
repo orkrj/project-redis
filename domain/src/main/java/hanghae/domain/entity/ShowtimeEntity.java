@@ -5,6 +5,9 @@ import hanghae.domain.common.showtime.ScheduleConverter;
 import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "showtimes")
 @NoArgsConstructor
@@ -21,6 +24,6 @@ public class ShowtimeEntity {
     @JoinColumn(name = "movie_id")
     private MovieEntity movie;
 
-    // TODO 다대다 풀기 위해 중간 테이블 필요
-    // private TheaterEntity theater;
+    @OneToMany(mappedBy = "showtime", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<TheaterShowtimeEntity> theaterShowtime = new ArrayList<>();
 }
