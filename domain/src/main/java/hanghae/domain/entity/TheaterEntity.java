@@ -24,4 +24,7 @@ public class TheaterEntity {
 
     @OneToMany(mappedBy = "theater", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<TheaterShowtimeEntity> theaterShowtime = new ArrayList<>();
+
+    @OneToMany(mappedBy = "theater", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<MovieTheaterEntity> movieTheater = new ArrayList<>();
 }

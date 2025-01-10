@@ -35,4 +35,7 @@ public class MovieEntity extends BaseEntity {
 
     @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ShowtimeEntity> showtime = new ArrayList<>();
+
+    @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<MovieTheaterEntity> movieTheater = new ArrayList<>();
 }
