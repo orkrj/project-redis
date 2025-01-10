@@ -16,6 +16,10 @@ public class ShowtimeCollection {
         this.showtimeList = new ArrayList<>();
     }
 
+    public ShowtimeCollection(List<Showtime> showtimeList) {
+        this.showtimeList = new ArrayList<>(showtimeList);
+    }
+
     public void add(Showtime showtime) {
         // TODO NPE 는 전역 예외 처리하자
         isDuplicate(showtime);
