@@ -1,1 +1,3 @@
-rootProject.name = 'redis'
+rootProject.name = 'project-movie'
+
+include 'common', 'main', 'domain', 'application', 'api'
