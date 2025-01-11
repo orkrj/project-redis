@@ -13,6 +13,14 @@ java {
 	}
 }
 
+jar {
+	manifest {
+		attributes(
+				'Main-Class': 'hanghae.main.MainApplication'
+		)
+	}
+}
+
 repositories {
 	mavenCentral()
 }
