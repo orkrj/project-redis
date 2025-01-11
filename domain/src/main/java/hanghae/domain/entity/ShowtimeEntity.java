@@ -3,11 +3,13 @@ package hanghae.domain.entity;
 import hanghae.domain.common.showtime.Schedule;
 import hanghae.domain.common.showtime.ScheduleConverter;
 import jakarta.persistence.*;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
 @Entity
 @Table(name = "showtimes")
 @NoArgsConstructor
