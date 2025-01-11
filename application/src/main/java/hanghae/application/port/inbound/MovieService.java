@@ -1,2 +1,9 @@
-package hanghae.application.port.inbound;public interface MovieService {
+package hanghae.application.port.inbound;
+
+import hanghae.application.dto.MovieResponse;
+
+import java.util.List;
+
+public interface MovieService {
+    List<MovieResponse> findMoviesPlayingNow();
 }
