@@ -13,12 +13,8 @@ java {
 	}
 }
 
-jar {
-	manifest {
-		attributes(
-				'Main-Class': 'hanghae.main.MainApplication'
-		)
-	}
+springBoot {
+	mainClass = 'hanghae.core.CoreApplication'
 }
 
 repositories {
