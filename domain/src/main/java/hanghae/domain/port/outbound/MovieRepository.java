@@ -9,5 +9,5 @@ import java.util.Optional;
 
 @Repository
 public interface MovieRepository {
-    Optional<List<Movie>> findMoviesPlayingNow(LocalDate now);
+    Optional<List<Movie>> findMoviesPlaying(LocalDate now);
 }

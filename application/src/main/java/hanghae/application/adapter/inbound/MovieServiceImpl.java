@@ -18,9 +18,9 @@ public class MovieServiceImpl implements MovieService {
     private final MovieRepository movieRepository;
 
     @Override
-    public List<MovieResponse> findMoviesPlayingNow() {
+    public List<MovieResponse> findMoviesPlaying() {
         // TODO findAll 같은 공통 로직으로 찾은 다음 stream 으로 필터링하는 방향으로 리팩토링
-        List<Movie> movieList = movieRepository.findMoviesPlayingNow(LocalDate.now())
+        List<Movie> movieList = movieRepository.findMoviesPlaying(LocalDate.now())
                 .orElseThrow(() -> new NoContentsException("movie"));
 
         return movieList.stream()

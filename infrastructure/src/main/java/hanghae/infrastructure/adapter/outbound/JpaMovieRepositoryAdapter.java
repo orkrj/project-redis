@@ -18,7 +18,7 @@ public class JpaMovieRepositoryAdapter implements MovieRepository {
     private final JpaMovieRepository jpaMovieRepository;
 
     @Override
-    public Optional<List<Movie>> findMoviesPlayingNow(LocalDate now) {
+    public Optional<List<Movie>> findMoviesPlaying(LocalDate now) {
         return jpaMovieRepository.findMoviesPlayingNow(now)
                 .map(this::toMovieList);
     }
