@@ -2,13 +2,15 @@ package hanghae.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
 
-@SpringBootApplication
-@ComponentScan(basePackages = {
-        "hanghae.api",
-        "hanghae.application.adapter.inbound"
-})
+@SpringBootApplication(
+        scanBasePackages = {
+                "hanghae.api",
+                "hanghae.application",
+                "hanghae.domain",
+                "hanghae.infrastructure"
+        }
+)
 public class ApiApplication {
 
     public static void main(String[] args) {
