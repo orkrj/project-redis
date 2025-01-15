@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @ComponentScan(basePackages = {
         "hanghae.application",
-        "hanghae.domain.port.outbound"
+        "hanghae.domain"
 })
 public class Application {
 
