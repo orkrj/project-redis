@@ -1,4 +1,4 @@
-package hanghae.domain.port.outbound;
+package hanghae.domain.port;
 
 import hanghae.domain.domain.Movie;
 import org.springframework.stereotype.Repository;

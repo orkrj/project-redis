@@ -1,7 +1,7 @@
-package hanghae.api.adapter.inbound;
+package hanghae.api.adapter;
 
 import hanghae.application.dto.MovieResponse;
-import hanghae.application.port.inbound.MovieService;
+import hanghae.application.port.MovieService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

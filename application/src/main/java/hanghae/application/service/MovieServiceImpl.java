@@ -1,10 +1,10 @@
-package hanghae.application.adapter.inbound;
+package hanghae.application.service;
 
 import hanghae.application.dto.MovieResponse;
-import hanghae.application.port.inbound.MovieService;
+import hanghae.application.port.MovieService;
 import hanghae.common.exception.NoContentsException;
 import hanghae.domain.domain.Movie;
-import hanghae.domain.port.outbound.MovieRepository;
+import hanghae.domain.port.MovieRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

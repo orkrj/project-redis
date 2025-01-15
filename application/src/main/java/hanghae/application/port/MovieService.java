@@ -1,4 +1,4 @@
-package hanghae.application.port.inbound;
+package hanghae.application.port;
 
 import hanghae.application.dto.MovieResponse;
 

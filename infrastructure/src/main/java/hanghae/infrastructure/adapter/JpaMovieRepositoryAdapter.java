@@ -1,8 +1,8 @@
-package hanghae.infrastructure.adapter.outbound;
+package hanghae.infrastructure.adapter;
 
 import hanghae.domain.domain.Movie;
 import hanghae.domain.entity.MovieEntity;
-import hanghae.domain.port.outbound.MovieRepository;
+import hanghae.domain.port.MovieRepository;
 import hanghae.infrastructure.repository.JpaMovieRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
