@@ -16,8 +16,7 @@ CREATE TABLE movies (
 CREATE TABLE showtimes (
                            showtime_id BIGINT AUTO_INCREMENT PRIMARY KEY,
                            schedule JSON NOT NULL,
-                           movie_id BIGINT NOT NULL,
-                           FOREIGN KEY (movie_id) REFERENCES movies (movie_id) ON DELETE CASCADE
+                           movie_id BIGINT NOT NULL
 );
 
 -- 극장 테이블
@@ -34,16 +33,12 @@ CREATE TABLE theaters (
 CREATE TABLE theater_showtime (
                                   theater_showtime_id BIGINT AUTO_INCREMENT PRIMARY KEY,
                                   theater_id BIGINT NOT NULL,
-                                  showtime_id BIGINT NOT NULL,
-                                  FOREIGN KEY (theater_id) REFERENCES theaters (theater_id) ON DELETE CASCADE,
-                                  FOREIGN KEY (showtime_id) REFERENCES showtimes (showtime_id) ON DELETE CASCADE
+                                  showtime_id BIGINT NOT NULL
 );
 
 -- 중간 테이블: 영화-극장 관계
 CREATE TABLE movie_theater (
                                movie_theater_id BIGINT AUTO_INCREMENT PRIMARY KEY,
                                movie_id BIGINT NOT NULL,
-                               theater_id BIGINT NOT NULL,
-                               FOREIGN KEY (movie_id) REFERENCES movies (movie_id) ON DELETE CASCADE,
-                               FOREIGN KEY (theater_id) REFERENCES theaters (theater_id) ON DELETE CASCADE
+                               theater_id BIGINT NOT NULL
 );
