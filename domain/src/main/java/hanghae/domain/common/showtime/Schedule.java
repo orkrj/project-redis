@@ -11,24 +11,24 @@ import java.util.Objects;
 public class Schedule {
 
     @Getter
-    private final LocalDateTime startTime;
+    private final LocalDateTime startDateTime;
 
     @Getter
-    private final LocalDateTime endTime;
+    private final LocalDateTime endDateTime;
 
-    private final LocalDateTime baseTime;
+    private final LocalDateTime baseDateTime;
 
-    public Schedule(LocalDateTime startTime, LocalDateTime endTime, Clock clock) throws InvalidScheduleException {
-        this.baseTime = LocalDateTime.now(clock);
+    public Schedule(LocalDateTime startDateTime, LocalDateTime endDateTime, Clock clock) throws InvalidScheduleException {
+        this.baseDateTime = LocalDateTime.now(clock);
 
-        isValidSchedule(startTime, endTime, baseTime);
+        isValidSchedule(startDateTime, endDateTime, baseDateTime);
 
-        this.startTime = startTime;
-        this.endTime = endTime;
+        this.startDateTime = startDateTime;
+        this.endDateTime = endDateTime;
     }
 
     private LocalDate convertStartTimeToLocalDate() {
-        return startTime.toLocalDate();
+        return startDateTime.toLocalDate();
     }
 
     private void isValidSchedule(LocalDateTime startTime, LocalDateTime endTime, LocalDateTime baseTime) throws InvalidScheduleException {
@@ -58,12 +58,12 @@ public class Schedule {
     }
 
     public void isValidScheduleWithMovieRunningTime(int movieRunningTime) throws InvalidScheduleException {
-        LocalDateTime calculatedEndTime = startTime.plusMinutes(movieRunningTime);
+        LocalDateTime calculatedEndTime = startDateTime.plusMinutes(movieRunningTime);
 
-        if (endTime.isBefore(calculatedEndTime)) {
+        if (endDateTime.isBefore(calculatedEndTime)) {
             throw new InvalidScheduleException(
                     String.format("schedule end time (%s) is before calculated end time (%s).",
-                            endTime, calculatedEndTime
+                            endDateTime, calculatedEndTime
                     )
             );
         }
@@ -74,20 +74,20 @@ public class Schedule {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Schedule schedule = (Schedule) o;
-        return Objects.equals(startTime, schedule.startTime) && Objects.equals(endTime, schedule.endTime);
+        return Objects.equals(startDateTime, schedule.startDateTime) && Objects.equals(endDateTime, schedule.endDateTime);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(startTime, endTime);
+        return Objects.hash(startDateTime, endDateTime);
     }
 
     @Override
     public String toString() {
         return "Schedule{" +
-                "startTime=" + startTime +
-                ", endTime=" + endTime +
-                ", baseTime=" + baseTime +
+                "startTime=" + startDateTime +
+                ", endTime=" + endDateTime +
+                ", baseTime=" + baseDateTime +
                 '}';
     }
 }

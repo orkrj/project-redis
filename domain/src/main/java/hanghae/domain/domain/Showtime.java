@@ -27,7 +27,7 @@ public class Showtime {
     }
 
     public LocalDateTime getStartTime() {
-        return schedule.getStartTime();
+        return schedule.getStartDateTime();
     }
 
     public String getStartTimeAsString() {
@@ -35,7 +35,7 @@ public class Showtime {
     }
 
     public LocalDateTime getEndTime() {
-        return schedule.getEndTime();
+        return schedule.getEndDateTime();
     }
 
     public String getEndTimeAsString() {
