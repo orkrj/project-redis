@@ -5,6 +5,7 @@ import hanghae.domain.entity.MovieEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -50,5 +51,14 @@ public class Movie {
                 .runningTime(movieEntity.getRunningTime())
                 .genre(movieEntity.getGenre())
                 .build();
+    }
+
+    public Long getMovieId() {
+        return this.id.getMovieId();
+    }
+
+    public Movie setShowtime(List<Showtime> showtimeList) {
+        this.showtime = showtimeList;
+        return this;
     }
 }

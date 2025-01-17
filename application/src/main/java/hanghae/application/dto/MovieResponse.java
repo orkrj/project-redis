@@ -5,6 +5,7 @@ import hanghae.domain.domain.Showtime;
 import hanghae.domain.domain.Theater;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public record MovieResponse(
