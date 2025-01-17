@@ -7,7 +7,7 @@ import hanghae.infrastructure.repository.JpaMovieRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,12 +18,12 @@ public class JpaMovieRepositoryAdapter implements MovieRepository {
     private final JpaMovieRepository jpaMovieRepository;
 
     @Override
-    public Optional<List<Movie>> findMoviesPlaying(LocalDate now) {
-        return jpaMovieRepository.findMoviesPlayingNow(now)
-                .map(this::toMovieList);
+    public Optional<List<Movie>> findMoviesPlaying(LocalDateTime now) {
+        return jpaMovieRepository.findMoviesPlaying(now)
+                .map(this::toMovieListFrom);
     }
 
-    private List<Movie> toMovieList(List<MovieEntity> movieEntities) {
+    private List<Movie> toMovieListFrom(List<MovieEntity> movieEntities) {
         return movieEntities.stream()
                 .map(Movie::from)
                 .toList();
