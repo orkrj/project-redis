@@ -3,7 +3,7 @@ spring:
     name: infrastructure
 
   datasource:
-    url: jdbc:mysql://localhost:3306/project-movie
+    url: jdbc:mysql://localhost:3306/project_movie
     username: master
     password: password
     hikari:
@@ -11,7 +11,14 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
+    defer-datasource-initialization: true
     properties:
       hibernate:
+        show_sql: true
+        format_sql: true
         dialect: org.hibernate.dialect.MySQLDialect
+
+  sql:
+    init:
+      mode: always
