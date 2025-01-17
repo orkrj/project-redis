@@ -1,9 +1,6 @@
 package hanghae.domain.domain;
 
-import hanghae.domain.common.movie.AgeRating;
-import hanghae.domain.common.movie.Genre;
-import hanghae.domain.common.movie.ReleaseDate;
-import hanghae.domain.common.movie.RunningTime;
+import hanghae.domain.common.movie.*;
 import hanghae.domain.entity.MovieEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,6 +13,8 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 public class Movie {
+
+    private MovieId id;
 
     private String title;
 
@@ -43,6 +42,7 @@ public class Movie {
 
     public static Movie from(MovieEntity movieEntity) {
         return Movie.builder()
+                .id(new MovieId(movieEntity.getMovieId()))
                 .title(movieEntity.getTitle())
                 .ageRating(movieEntity.getAgeRating())
                 .releaseDate(movieEntity.getReleaseDate())
