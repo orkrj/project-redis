@@ -4,11 +4,13 @@ import hanghae.application.dto.MovieResponse;
 import hanghae.application.port.MovieService;
 import hanghae.common.exception.NoContentsException;
 import hanghae.domain.domain.Movie;
+import hanghae.domain.domain.Showtime;
 import hanghae.domain.port.MovieRepository;
+import hanghae.domain.port.ShowtimeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -16,15 +18,26 @@ import java.util.List;
 public class MovieServiceImpl implements MovieService {
 
     private final MovieRepository movieRepository;
+    private final ShowtimeRepository showtimeRepository;
 
     @Override
     public List<MovieResponse> findMoviesPlaying() {
-        // TODO findAll 같은 공통 로직으로 찾은 다음 stream 으로 필터링하는 방향으로 리팩토링
-        List<Movie> movieList = movieRepository.findMoviesPlaying(LocalDate.now())
+        List<Movie> movieList = movieRepository.findMoviesPlaying(LocalDateTime.now())
                 .orElseThrow(() -> new NoContentsException("movie"));
 
         return movieList.stream()
+                .map(this::saveShowtimeInMoviePlaying)
                 .map(MovieResponse::from)
                 .toList();
     }
+
+    private Movie saveShowtimeInMoviePlaying(Movie movie) {
+        List<Showtime> showtimeList = findShowtimeOfMoviePlaying(movie);
+        return movie.setShowtime(showtimeList);
+    }
+
+    private List<Showtime> findShowtimeOfMoviePlaying(Movie movie) {
+        return showtimeRepository.findShowtimeByMovieId(movie.getMovieId());
+    }
+
 }
