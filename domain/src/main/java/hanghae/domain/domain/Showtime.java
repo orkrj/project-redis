@@ -1,7 +1,6 @@
 package hanghae.domain.domain;
 
-import hanghae.domain.common.showtime.Schedule;
-import hanghae.domain.entity.ShowtimeEntity;
+import hanghae.domain.types.showtime.Schedule;
 import lombok.Builder;
 
 import java.time.LocalDateTime;
@@ -46,11 +45,5 @@ public class Showtime {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd:HH:mm");
 
         return localDateTime.format(formatter);
-    }
-
-    public static Showtime from(ShowtimeEntity showtimeEntity) {
-        return Showtime.builder()
-                .schedule(showtimeEntity.getSchedule())
-                .build();
     }
 }

@@ -1,4 +1,4 @@
-package hanghae.domain.common.theater;
+package hanghae.domain.types.theater;
 
 import hanghae.domain.domain.Showtime;
 import hanghae.domain.exception.Theater.InvalidShowtimesException;

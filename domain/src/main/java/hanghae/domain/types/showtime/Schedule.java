@@ -1,4 +1,4 @@
-package hanghae.domain.common.showtime;
+package hanghae.domain.types.showtime;
 
 import hanghae.domain.exception.showtime.InvalidScheduleException;
 import lombok.Getter;
@@ -18,8 +18,8 @@ public class Schedule {
 
     private final LocalDateTime baseDateTime;
 
-    public Schedule(LocalDateTime startDateTime, LocalDateTime endDateTime, Clock clock) throws InvalidScheduleException {
-        this.baseDateTime = LocalDateTime.now(clock);
+    public Schedule(LocalDateTime startDateTime, LocalDateTime endDateTime) throws InvalidScheduleException {
+        this.baseDateTime = LocalDateTime.now();
 
         isValidSchedule(startDateTime, endDateTime, baseDateTime);
 

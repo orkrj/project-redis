@@ -1,11 +1,9 @@
 package hanghae.domain.domain;
 
-import hanghae.domain.common.movie.*;
-import hanghae.domain.entity.MovieEntity;
+import hanghae.domain.types.movie.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -39,18 +37,6 @@ public class Movie {
 
     public int getRunningTimeAsMinutes() {
         return runningTime.getMinutes();
-    }
-
-    public static Movie from(MovieEntity movieEntity) {
-        return Movie.builder()
-                .id(new MovieId(movieEntity.getMovieId()))
-                .title(movieEntity.getTitle())
-                .ageRating(movieEntity.getAgeRating())
-                .releaseDate(movieEntity.getReleaseDate())
-                .thumbnailUrl(movieEntity.getThumbnailUrl())
-                .runningTime(movieEntity.getRunningTime())
-                .genre(movieEntity.getGenre())
-                .build();
     }
 
     public Long getMovieId() {

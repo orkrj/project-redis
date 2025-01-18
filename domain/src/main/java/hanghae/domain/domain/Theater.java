@@ -1,7 +1,6 @@
 package hanghae.domain.domain;
 
-import hanghae.domain.common.theater.ShowtimeCollection;
-import hanghae.domain.entity.TheaterEntity;
+import hanghae.domain.types.theater.ShowtimeCollection;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -17,12 +16,5 @@ public class Theater {
 
     public static Theater of(String theaterName) {
         return new Theater(theaterName, new ShowtimeCollection());
-    }
-
-    public static Theater from(TheaterEntity theaterEntity) {
-        return Theater.builder()
-                .theaterName(theaterEntity.getTheaterName())
-                .showtimeCollection(theaterEntity.getShowtimeCollection())
-                .build();
     }
 }
