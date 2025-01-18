@@ -1,6 +1,6 @@
 package hanghae.infrastructure.repository;
 
-import hanghae.domain.entity.ShowtimeEntity;
+import hanghae.infrastructure.domain.entity.ShowtimeEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

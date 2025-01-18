@@ -1,8 +1,8 @@
 package hanghae.infrastructure.adapter;
 
 import hanghae.domain.domain.Movie;
-import hanghae.domain.entity.MovieEntity;
 import hanghae.domain.port.MovieRepository;
+import hanghae.infrastructure.domain.entity.MovieEntity;
 import hanghae.infrastructure.repository.JpaMovieRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -25,7 +25,7 @@ public class JpaMovieRepositoryAdapter implements MovieRepository {
 
     private List<Movie> toMovieListFrom(List<MovieEntity> movieEntities) {
         return movieEntities.stream()
-                .map(Movie::from)
+                .map(MovieEntity::toMovie)
                 .toList();
     }
 }
