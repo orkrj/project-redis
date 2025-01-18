@@ -37,7 +37,6 @@ public class MovieServiceImpl implements MovieService {
     }
 
     private List<Showtime> findShowtimeOfMoviePlaying(Movie movie) {
-        return showtimeRepository.findShowtimeByMovieId(movie.getMovieId());
+        return showtimeRepository.findShowtimeByMovie(movie);
     }
-
 }
