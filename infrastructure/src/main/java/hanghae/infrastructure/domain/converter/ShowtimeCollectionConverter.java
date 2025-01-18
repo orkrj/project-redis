@@ -1,4 +1,4 @@
-package hanghae.domain.common.theater;
+package hanghae.domain.types.theater;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;

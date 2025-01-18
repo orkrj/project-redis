@@ -1,7 +1,9 @@
-package hanghae.domain.entity;
+package hanghae.infrastructure.domain.entity;
 
-import hanghae.domain.common.movie.*;
-import hanghae.domain.common.entity.BaseEntity;
+import hanghae.domain.domain.Movie;
+import hanghae.domain.types.movie.*;
+import hanghae.infrastructure.domain.converter.ReleaseDateConverter;
+import hanghae.infrastructure.domain.converter.RunningTimeConverter;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -40,4 +42,17 @@ public class MovieEntity extends BaseEntity {
 
     @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<MovieTheaterEntity> movieTheater = new ArrayList<>();
+
+    // TODO mapstruct 사용하자 -> 엔티티에서 정적 팩토리 메서드 사용하니까 이름이 직관적이지 않음
+    public static Movie toMovie(MovieEntity movieEntity) {
+        return Movie.builder()
+                .id(new MovieId(movieEntity.getMovieId()))
+                .title(movieEntity.getTitle())
+                .ageRating(movieEntity.getAgeRating())
+                .releaseDate(movieEntity.getReleaseDate())
+                .thumbnailUrl(movieEntity.getThumbnailUrl())
+                .runningTime(movieEntity.getRunningTime())
+                .genre(movieEntity.getGenre())
+                .build();
+    }
 }

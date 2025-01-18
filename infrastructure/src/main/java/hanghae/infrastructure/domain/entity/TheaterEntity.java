@@ -1,7 +1,8 @@
-package hanghae.domain.entity;
+package hanghae.infrastructure.domain.entity;
 
-import hanghae.domain.common.theater.ShowtimeCollection;
-import hanghae.domain.common.theater.ShowtimeCollectionConverter;
+import hanghae.domain.domain.Theater;
+import hanghae.domain.types.theater.ShowtimeCollection;
+import hanghae.infrastructure.domain.converter.ShowtimeCollectionConverter;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,4 +30,12 @@ public class TheaterEntity {
 
     @OneToMany(mappedBy = "theater", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<MovieTheaterEntity> movieTheater = new ArrayList<>();
+
+    // TODO mapstruct 사용하자 -> 엔티티에서 정적 팩토리 메서드 사용하니까 이름이 직관적이지 않음
+    public static Theater toTheater(TheaterEntity theaterEntity) {
+        return Theater.builder()
+                .theaterName(theaterEntity.getTheaterName())
+                .showtimeCollection(theaterEntity.getShowtimeCollection())
+                .build();
+    }
 }

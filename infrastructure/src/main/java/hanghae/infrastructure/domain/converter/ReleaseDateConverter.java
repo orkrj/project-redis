@@ -1,4 +1,4 @@
-package hanghae.domain.common.movie;
+package hanghae.domain.types.movie;
 
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;

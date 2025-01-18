@@ -1,4 +1,4 @@
-package hanghae.domain.common.entity;
+package hanghae.infrastructure.domain.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;

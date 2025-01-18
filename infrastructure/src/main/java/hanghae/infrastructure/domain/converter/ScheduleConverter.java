@@ -1,4 +1,4 @@
-package hanghae.domain.common.showtime;
+package hanghae.domain.types.showtime;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
