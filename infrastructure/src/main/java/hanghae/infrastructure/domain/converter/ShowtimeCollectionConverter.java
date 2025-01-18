@@ -1,9 +1,10 @@
-package hanghae.domain.types.theater;
+package hanghae.infrastructure.domain.converter;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import hanghae.domain.domain.Showtime;
+import hanghae.domain.types.theater.ShowtimeCollection;
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
 

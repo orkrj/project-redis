@@ -1,13 +1,20 @@
-package hanghae.domain.types.showtime;
+package hanghae.infrastructure.domain.converter;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import hanghae.domain.types.showtime.Schedule;
+import hanghae.infrastructure.domain.mixin.ScheduleMixin;
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
 
 @Converter(autoApply = true)
 public class ScheduleConverter implements AttributeConverter<Schedule, String> {
-    private final ObjectMapper objectMapper = new ObjectMapper();
+    private final ObjectMapper objectMapper;
+
+    public ScheduleConverter(ObjectMapper objectMapper) {
+        this.objectMapper = objectMapper;
+        this.objectMapper.addMixIn(Schedule.class, ScheduleMixin.class);
+    }
 
     @Override
     public String convertToDatabaseColumn(Schedule schedule) {

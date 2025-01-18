@@ -1,5 +1,6 @@
-package hanghae.domain.types.movie;
+package hanghae.infrastructure.domain.converter;
 
+import hanghae.domain.types.movie.ReleaseDate;
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
 
