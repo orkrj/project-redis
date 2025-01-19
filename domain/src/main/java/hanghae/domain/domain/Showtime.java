@@ -2,6 +2,8 @@ package hanghae.domain.domain;
 
 import hanghae.domain.types.showtime.Schedule;
 import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -45,5 +47,9 @@ public class Showtime {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd:HH:mm");
 
         return localDateTime.format(formatter);
+    }
+
+    public String getTheaterName() {
+        return this.theater.getTheaterName();
     }
 }
