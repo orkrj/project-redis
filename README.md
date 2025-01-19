@@ -20,6 +20,7 @@
 - 주로 컨트롤러 레이어와 관련된 역할 수행.
 
 ### **역할**
+- **실행 모듈**
 - HTTP 요청 처리
 - REST API 엔드포인트 제공
 - Spring Boot 애플리케이션 시작점
@@ -44,8 +45,8 @@
 - 애플리케이션의 주요 비즈니스 규칙을 정의.
 
 ### **역할**
-- 도메인 객체 및 엔티티 정의
-- 도메인 서비스 및 비즈니스 규칙 구현 및 검증
+- 도메인 객체 정의
+- 도메인 서비스 및 비즈니스 규칙 검증
 - 도메인 객체 간 관계 설정
 
 ---
@@ -56,7 +57,9 @@
 - 외부 시스템(데이터베이스, 메시징 등)과의 상호작용 관리.
 
 ### **역할**
-- JPA 리포지토리 인터페이스 정의 및 구현
+- 엔티티 관리
+- 더미 데이터 생성
+- JPA 레포지토리 인터페이스 정의 및 구현
 - 데이터베이스 설정
 - 외부 시스템 통합 (예: 캐시, 메시징)
 
@@ -66,12 +69,90 @@
 
 ```plaintext
 project-movie/
-├── common/         # 공통 모듈
-├── api/            # 컨트롤러 및 메인 실행 모듈
-├── application/    # 비즈니스 서비스 처리 및 포트 역할
-├── domain/         # 비즈니스 엔티티 및 도메인 로직
-└── infrastructure/ # 데이터베이스 및 JPA
+├── common/         
+├── api/           
+├── application/    
+├── domain/         
+└── infrastructure/ 
 ```
+---
+
+## 사용 방법
+```
+docker compose up -d
+```
+
+#### 조회하는 날짜를 기준으로 상영 중인 영화 상세 조회
+```
+curl -x GET http://localhost:8080/api/v1/movie
+```
+
+또는, <br>
+> api/src/test/java/hanghae/api/adapter/MovieController.http 실행
+
+
+
+#### 응답 예시
+_endTime: 편의를 위해 runningTime 과 관계없이 startTime 의 2시간 뒤로 고정_
+```JSON
+[
+  {
+    "title": "Movie #1",
+    "ageRating": "AGE_19",
+    "releaseDate": "2024-10-13",
+    "thumbnailUrl": "https://www.dummy-url/Movie #1",
+    "runningTime": 141,
+    "genre": "ACTION",
+    "showtime": [
+      {
+        "startTime": "20250206:11:00",
+        "endTime": "20250206:13:00",
+        "theatersName": [
+          "Theater #47"
+        ]
+      },
+      {
+        "startTime": "20250727:10:22",
+        "endTime": "20250727:12:22",
+        "theatersName": [
+          "Theater #22",
+          "Theater #11"
+        ]
+      },
+      ...
+    ]
+  },
+  {
+    "title": "Movie #7",
+    "ageRating": "AGE_12",
+    "releaseDate": "2023-04-25",
+    "thumbnailUrl": "https://www.dummy-url/Movie #7",
+    "runningTime": 120,
+    "genre": "ANIMATION",
+    "showtime": [
+      {
+        "startTime": "20250121:07:09",
+        "endTime": "20250121:09:09",
+        "theatersName": [
+          "Theater #32",
+          "Theater #33"
+        ]
+      },
+      {
+        "startTime": "20251118:00:23",
+        "endTime": "20251118:02:23",
+        "theatersName": [
+          "Theater #27",
+          "Theater #1"
+        ]
+      },
+      ...
+    ]
+  },
+  ...
+]
+```
+
 ---
 
 ## ERD
