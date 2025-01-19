@@ -2,8 +2,6 @@ package hanghae.domain.domain;
 
 import hanghae.domain.types.showtime.Schedule;
 import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -22,9 +20,8 @@ public class Showtime {
         this.schedule = schedule;
         this.movie = movie;
 
-        // 더미 데이터 삽입을 위해 비활성화
-        // schedule.isValidScheduleWithMovieReleaseDate(movie.getReleaseDateAsLocalDate());
-        // schedule.isValidScheduleWithMovieRunningTime(movie.getRunningTimeAsMinutes());
+         schedule.isValidScheduleWithMovieReleaseDate(movie.getReleaseDateAsLocalDate());
+         schedule.isValidScheduleWithMovieRunningTime(movie.getRunningTimeAsMinutes());
 
         this.theaters = theaters;
     }

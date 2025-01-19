@@ -21,8 +21,7 @@ public class Schedule {
     public Schedule(LocalDateTime startDateTime, LocalDateTime endDateTime) throws InvalidScheduleException {
         this.baseDateTime = LocalDateTime.now();
 
-        // 더미 데이터 삽입을 위해 비활성화
-        // isValidSchedule(startDateTime, endDateTime, baseDateTime);
+        isValidSchedule(startDateTime, endDateTime, baseDateTime);
 
         this.startDateTime = startDateTime;
         this.endDateTime = endDateTime;

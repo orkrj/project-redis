@@ -17,7 +17,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-@Component
+// @Component
+// 상영관 50 개, 영화 500 개, 상영 시간 100_000 개
 @RequiredArgsConstructor
 public class DummyDataGenerator implements CommandLineRunner {
 
@@ -31,9 +32,9 @@ public class DummyDataGenerator implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        generateTheaters(30);
+        generateTheaters(50);
         generateMovies(500);
-        generateShowtimes(1_000);
+        generateShowtimes(100_000);
 
         linkMoviesToTheaters();
         linkShowtimesToTheaters();
