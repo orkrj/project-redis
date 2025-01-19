@@ -36,12 +36,12 @@ public class ShowtimeEntity {
     public static Showtime showtimeDomainOf(
             ShowtimeEntity showtimeEntity,
             Movie movie,
-            Theater theater
+            List<Theater> theaters
     ) {
         return Showtime.builder()
                 .schedule(showtimeEntity.getSchedule())
                 .movie(movie)
-                .theater(theater)
+                .theaters(theaters)
                 .build();
     }
 }

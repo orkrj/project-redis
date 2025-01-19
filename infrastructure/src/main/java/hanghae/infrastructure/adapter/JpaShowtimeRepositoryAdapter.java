@@ -23,20 +23,22 @@ public class JpaShowtimeRepositoryAdapter implements ShowtimeRepository {
         return jpaShowtimeRepository.findShowtimeEntitiesByMovie_MovieId(movie.getMovieId())
                 .stream()
                 .map(showtimeEntity -> {
-                    Theater theater = findTheaterByShowtime(showtimeEntity);
-                    return toShowtime(showtimeEntity, movie, theater);
+                    List<Theater> theaters = findTheaterByShowtime(showtimeEntity);
+                    return toShowtime(showtimeEntity, movie, theaters);
                 })
                 .toList();
     }
 
-    private Showtime toShowtime(ShowtimeEntity showtimeEntity, Movie movie, Theater theater) {
-        return ShowtimeEntity.showtimeDomainOf(showtimeEntity, movie, theater);
+    private Showtime toShowtime(ShowtimeEntity showtimeEntity, Movie movie, List<Theater> theaters) {
+        return ShowtimeEntity.showtimeDomainOf(showtimeEntity, movie, theaters);
     }
 
-    private Theater findTheaterByShowtime(ShowtimeEntity showtimeEntity) {
-        TheaterEntity theaterEntity =
-                jpaShowtimeRepository.findTheaterEntityByShowtimeId(showtimeEntity.getShowtimeId());
+    private List<Theater> findTheaterByShowtime(ShowtimeEntity showtimeEntity) {
+        List<TheaterEntity> theaterEntities =
+                jpaShowtimeRepository.findTheaterEntitiesByShowtimeId(showtimeEntity.getShowtimeId());
 
-        return TheaterEntity.toTheaterDomain(theaterEntity);
+        return theaterEntities.stream()
+                .map(TheaterEntity::toTheaterDomain)
+                .toList();
     }
 }

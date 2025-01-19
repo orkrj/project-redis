@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 @Builder
 public class Showtime {
@@ -15,16 +16,16 @@ public class Showtime {
 
     private Movie movie;
 
-    private Theater theater;
+    private List<Theater> theaters;
 
-    public Showtime(Schedule schedule, Movie movie, Theater theater) {
+    public Showtime(Schedule schedule, Movie movie, List<Theater> theaters) {
         this.schedule = schedule;
         this.movie = movie;
 
         schedule.isValidScheduleWithMovieReleaseDate(movie.getReleaseDateAsLocalDate());
         schedule.isValidScheduleWithMovieRunningTime(movie.getRunningTimeAsMinutes());
 
-        this.theater = theater;
+        this.theaters = theaters;
     }
 
     public LocalDateTime getStartTime() {
@@ -49,7 +50,9 @@ public class Showtime {
         return localDateTime.format(formatter);
     }
 
-    public String getTheaterName() {
-        return this.theater.getTheaterName();
+    public List<String> getTheatersName() {
+        return theaters.stream()
+                .map(Theater::getTheaterName)
+                .toList();
     }
 }

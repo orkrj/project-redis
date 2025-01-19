@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+// TheaterResponse 는 좌석 정보가 필요할 때 사용할 예정
 public record MovieResponse(
         String title,
         String ageRating,
@@ -15,8 +16,8 @@ public record MovieResponse(
         String thumbnailUrl,
         int runningTime,
         String genre,
-        List<ShowtimeResponse> showtime,
-        List<TheaterResponse> theater
+        List<ShowtimeResponse> showtime
+        // List<TheaterResponse> theater
 ) {
 
     public static MovieResponse from(Movie movie) {
@@ -27,8 +28,8 @@ public record MovieResponse(
                 movie.getThumbnailUrl(),
                 movie.getRunningTimeAsMinutes(),
                 movie.getGenre().toString(),
-                showtimeResponseListFrom(movie.getShowtime()),
-                theaterResponseListFrom(movie.getTheater())
+                showtimeResponseListFrom(movie.getShowtime())
+                // theaterResponseListFrom(movie.getTheater())
         );
     }
 

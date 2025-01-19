@@ -12,5 +12,5 @@ public interface JpaShowtimeRepository extends JpaRepository<ShowtimeEntity, Lon
     List<ShowtimeEntity> findShowtimeEntitiesByMovie_MovieId(Long movieId);
 
     @Query("SELECT ts.theater FROM TheaterShowtimeEntity ts WHERE ts.showtime.showtimeId = :showtimeId")
-    TheaterEntity findTheaterEntityByShowtimeId(@Param("showtimeId") Long showtimeId);
+    List<TheaterEntity> findTheaterEntitiesByShowtimeId(@Param("showtimeId") Long showtimeId);
 }
