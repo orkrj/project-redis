@@ -19,4 +19,9 @@ public class TheaterShowtimeEntity {
     @ManyToOne
     @JoinColumn(name = "showtime_id", nullable = false)
     private ShowtimeEntity showtime;
+
+    public void setTheaterAndShowtime(TheaterEntity theater, ShowtimeEntity showtime) {
+        this.theater = theater;
+        this.showtime = showtime;
+    }
 }

@@ -7,6 +7,7 @@ import hanghae.infrastructure.domain.converter.RunningTimeConverter;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +22,7 @@ public class MovieEntity extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long movieId;
 
+    @Setter
     private String title;
 
     @Enumerated(EnumType.STRING)
@@ -54,5 +56,22 @@ public class MovieEntity extends BaseEntity {
                 .runningTime(movieEntity.getRunningTime())
                 .genre(movieEntity.getGenre())
                 .build();
+    }
+
+    public void setTitleAndThumbnailUrl(String title, String thumbnailUrl) {
+        this.title = title;
+        this.thumbnailUrl = thumbnailUrl;
+    }
+
+    public void setValueObjects(
+            ReleaseDate releaseDate,
+            RunningTime runningTime,
+            AgeRating ageRating,
+            Genre genre
+    ) {
+        this.releaseDate = releaseDate;
+        this.runningTime = runningTime;
+        this.ageRating = ageRating;
+        this.genre = genre;
     }
 }

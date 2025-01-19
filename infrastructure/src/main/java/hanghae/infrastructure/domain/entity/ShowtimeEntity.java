@@ -8,6 +8,7 @@ import hanghae.infrastructure.domain.converter.ScheduleConverter;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,9 +23,11 @@ public class ShowtimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long showtimeId;
 
+    @Setter
     @Convert(converter = ScheduleConverter.class)
     private Schedule schedule;
 
+    @Setter
     @ManyToOne
     @JoinColumn(name = "movie_id", nullable = false)
     private MovieEntity movie;
