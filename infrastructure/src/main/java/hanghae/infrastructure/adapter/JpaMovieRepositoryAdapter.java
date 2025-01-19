@@ -20,12 +20,12 @@ public class JpaMovieRepositoryAdapter implements MovieRepository {
     @Override
     public Optional<List<Movie>> findMoviesPlaying(LocalDateTime now) {
         return jpaMovieRepository.findMoviesPlaying(now)
-                .map(this::toMovieListFrom);
+                .map(this::toMovieList);
     }
 
-    private List<Movie> toMovieListFrom(List<MovieEntity> movieEntities) {
+    private List<Movie> toMovieList(List<MovieEntity> movieEntities) {
         return movieEntities.stream()
-                .map(MovieEntity::toMovie)
+                .map(MovieEntity::toMovieDomain)
                 .toList();
     }
 }

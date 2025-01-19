@@ -32,7 +32,7 @@ public class TheaterEntity {
     private List<MovieTheaterEntity> movieTheater = new ArrayList<>();
 
     // TODO mapstruct 사용하자 -> 엔티티에서 정적 팩토리 메서드 사용하니까 이름이 직관적이지 않음
-    public static Theater toTheater(TheaterEntity theaterEntity) {
+    public static Theater toTheaterDomain(TheaterEntity theaterEntity) {
         return Theater.builder()
                 .theaterName(theaterEntity.getTheaterName())
                 .showtimeCollection(theaterEntity.getShowtimeCollection())

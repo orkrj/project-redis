@@ -20,11 +20,11 @@ public class JpaShowtimeRepositoryAdapter implements ShowtimeRepository {
     public List<Showtime> findShowtimeByMovie(Movie movie) {
         return jpaShowtimeRepository.findShowtimeEntitiesByMovie_MovieId(movie.getMovieId())
                 .stream()
-                .map(showtimeEntity -> toShowtimeDomain(showtimeEntity, movie))
+                .map(showtimeEntity -> toShowtime(showtimeEntity, movie))
                 .toList();
     }
 
-    private Showtime toShowtimeDomain(ShowtimeEntity showtimeEntity, Movie movie) {
-        return ShowtimeEntity.showtimeOf(showtimeEntity, movie);
+    private Showtime toShowtime(ShowtimeEntity showtimeEntity, Movie movie) {
+        return ShowtimeEntity.showtimeDomainOf(showtimeEntity, movie);
     }
 }

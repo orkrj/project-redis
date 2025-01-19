@@ -44,7 +44,7 @@ public class MovieEntity extends BaseEntity {
     private List<MovieTheaterEntity> movieTheater = new ArrayList<>();
 
     // TODO mapstruct 사용하자 -> 엔티티에서 정적 팩토리 메서드 사용하니까 이름이 직관적이지 않음
-    public static Movie toMovie(MovieEntity movieEntity) {
+    public static Movie toMovieDomain(MovieEntity movieEntity) {
         return Movie.builder()
                 .id(new MovieId(movieEntity.getMovieId()))
                 .title(movieEntity.getTitle())
