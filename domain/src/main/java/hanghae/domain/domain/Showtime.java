@@ -20,8 +20,8 @@ public class Showtime {
         this.schedule = schedule;
         this.movie = movie;
 
-         schedule.isValidScheduleWithMovieReleaseDate(movie.getReleaseDateAsLocalDate());
-         schedule.isValidScheduleWithMovieRunningTime(movie.getRunningTimeAsMinutes());
+        schedule.isValidScheduleWithMovieReleaseDate(movie.getReleaseDateAsLocalDate());
+        schedule.isValidScheduleWithMovieRunningTime(movie.getRunningTimeAsMinutes());
 
         this.theaters = theaters;
     }

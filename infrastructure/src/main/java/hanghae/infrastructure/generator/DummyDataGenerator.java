@@ -17,8 +17,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-// @Component
-// 상영관 50 개, 영화 500 개, 상영 시간 100_000 개
+//@Component
+// 상영관 50 개, 영화 500 개, 상영 시간 10_000 개
 @RequiredArgsConstructor
 public class DummyDataGenerator implements CommandLineRunner {
 
@@ -34,7 +34,7 @@ public class DummyDataGenerator implements CommandLineRunner {
     public void run(String... args) throws Exception {
         generateTheaters(50);
         generateMovies(500);
-        generateShowtimes(100_000);
+        generateShowtimes(10_000);
 
         linkMoviesToTheaters();
         linkShowtimesToTheaters();
@@ -86,6 +86,7 @@ public class DummyDataGenerator implements CommandLineRunner {
             showtime.setMovie(movieRef);
 
             // start/endTime
+            // endTime: 편의를 위해 runningTime 과 관계없이 startTime 의 2시간 뒤로 고정
             LocalDateTime startTime = randomDateTimeIn2025();
             LocalDateTime endTime   = startTime.plusHours(2);
             Schedule schedule = new Schedule(startTime, endTime);
