@@ -55,7 +55,7 @@ public class DummyDataGenerator implements CommandLineRunner {
         for (int i = 1; i <= count; i++) {
             MovieEntity movie = new MovieEntity();
             String title = "Movie #" + i;
-            movie.setTitleAndThumbnailUrl(title, "https://www.dummy-url/" + title);
+            movie.setTitleAndThumbnailUrl(title, "https://www.dummy-url/" + i);
 
             ReleaseDate releaseDate = new ReleaseDate(
                     2023 + random.nextInt(6), // 2023~2028 사이

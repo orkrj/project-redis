@@ -3,7 +3,6 @@ package hanghae.domain.types.showtime;
 import hanghae.domain.exception.showtime.InvalidScheduleException;
 import lombok.Getter;
 
-import java.time.Clock;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Objects;
