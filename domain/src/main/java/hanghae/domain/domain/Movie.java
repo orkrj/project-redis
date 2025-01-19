@@ -47,4 +47,9 @@ public class Movie {
         this.showtime = showtimeList;
         return this;
     }
+
+    public Movie setTheater(List<Theater> theaterList) {
+        this.theater = theaterList;
+        return this;
+    }
 }
