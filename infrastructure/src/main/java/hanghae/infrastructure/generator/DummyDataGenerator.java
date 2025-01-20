@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -57,7 +58,12 @@ public class DummyDataGenerator implements CommandLineRunner {
             String title = "Movie #" + i;
             movie.setTitleAndThumbnailUrl(title, "https://www.dummy-url/" + i);
 
-            ReleaseDate releaseDate = new ReleaseDate(
+//            ReleaseDate releaseDate = new ReleaseDate(
+//                    2023 + random.nextInt(6), // 2023~2028 사이
+//                    1 + random.nextInt(12),   // 1~12월
+//                    1 + random.nextInt(28)    // 1~28일
+//            );
+            LocalDate releaseDate = LocalDate.of(
                     2023 + random.nextInt(6), // 2023~2028 사이
                     1 + random.nextInt(12),   // 1~12월
                     1 + random.nextInt(28)    // 1~28일
