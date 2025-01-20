@@ -1,6 +1,7 @@
 package hanghae.infrastructure.domain.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
@@ -12,6 +13,7 @@ public class TheaterShowtimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long theaterShowtimeId;
 
+    @Getter
     @ManyToOne
     @JoinColumn(name = "theater_id", nullable = false)
     private TheaterEntity theater;

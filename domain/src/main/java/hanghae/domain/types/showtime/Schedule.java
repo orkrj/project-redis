@@ -3,7 +3,6 @@ package hanghae.domain.types.showtime;
 import hanghae.domain.exception.showtime.InvalidScheduleException;
 import lombok.Getter;
 
-import java.time.Clock;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -21,7 +20,8 @@ public class Schedule {
     public Schedule(LocalDateTime startDateTime, LocalDateTime endDateTime) throws InvalidScheduleException {
         this.baseDateTime = LocalDateTime.now();
 
-        isValidSchedule(startDateTime, endDateTime, baseDateTime);
+        // 더미 데이터 삽입을 위해 검증 로직 일시적 비활성화
+//        isValidSchedule(startDateTime, endDateTime, baseDateTime);
 
         this.startDateTime = startDateTime;
         this.endDateTime = endDateTime;

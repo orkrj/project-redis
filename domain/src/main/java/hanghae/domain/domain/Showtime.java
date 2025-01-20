@@ -20,8 +20,9 @@ public class Showtime {
         this.schedule = schedule;
         this.movie = movie;
 
-        schedule.isValidScheduleWithMovieReleaseDate(movie.getReleaseDateAsLocalDate());
-        schedule.isValidScheduleWithMovieRunningTime(movie.getRunningTimeAsMinutes());
+        // 더미 데이터 삽입을 위해 검증 로직 일시적 비활성화
+//        schedule.isValidScheduleWithMovieReleaseDate(movie.getReleaseDateAsLocalDate());
+//        schedule.isValidScheduleWithMovieRunningTime(movie.getRunningTimeAsMinutes());
 
         this.theaters = theaters;
     }

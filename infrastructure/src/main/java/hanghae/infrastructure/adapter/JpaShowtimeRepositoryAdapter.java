@@ -20,7 +20,7 @@ public class JpaShowtimeRepositoryAdapter implements ShowtimeRepository {
 
     @Override
     public List<Showtime> findShowtimeByMovie(Movie movie) {
-        return jpaShowtimeRepository.findShowtimeEntitiesByMovie_MovieId(movie.getMovieId())
+        return jpaShowtimeRepository.findShowtimeEntitiesByMovie_MovieIdOrderBySchedule(movie.getMovieId())
                 .stream()
                 .map(showtimeEntity -> {
                     List<Theater> theaters = findTheaterByShowtime(showtimeEntity);

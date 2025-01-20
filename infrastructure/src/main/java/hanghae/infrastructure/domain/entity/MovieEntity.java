@@ -9,8 +9,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Entity
@@ -28,8 +31,10 @@ public class MovieEntity extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private AgeRating ageRating;
 
-    @Convert(converter = ReleaseDateConverter.class)
-    private ReleaseDate releaseDate;
+//    @Convert(converter = ReleaseDateConverter.class)
+//    private ReleaseDate releaseDate;
+
+    private LocalDate releaseDate;
 
     private String thumbnailUrl;
 
@@ -39,8 +44,9 @@ public class MovieEntity extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private Genre genre;
 
+    @OrderBy("schedule ASC")
     @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ShowtimeEntity> showtime = new ArrayList<>();
+    private Set<ShowtimeEntity> showtime = new HashSet<>();
 
     @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<MovieTheaterEntity> movieTheater = new ArrayList<>();
@@ -51,10 +57,12 @@ public class MovieEntity extends BaseEntity {
                 .id(new MovieId(movieEntity.getMovieId()))
                 .title(movieEntity.getTitle())
                 .ageRating(movieEntity.getAgeRating())
-                .releaseDate(movieEntity.getReleaseDate())
+//                .releaseDate(movieEntity.getReleaseDate())
+                .releaseDate(new ReleaseDate(movieEntity.getReleaseDate()))
                 .thumbnailUrl(movieEntity.getThumbnailUrl())
                 .runningTime(movieEntity.getRunningTime())
                 .genre(movieEntity.getGenre())
+                .showtime(ShowtimeEntity.toShowtimeDomainList(movieEntity.getShowtime()))
                 .build();
     }
 
@@ -64,7 +72,8 @@ public class MovieEntity extends BaseEntity {
     }
 
     public void setValueObjects(
-            ReleaseDate releaseDate,
+//            ReleaseDate releaseDate,
+            LocalDate releaseDate,
             RunningTime runningTime,
             AgeRating ageRating,
             Genre genre

@@ -6,6 +6,8 @@ services:
     depends_on:
       mysql-db:
         condition: service_healthy
+      redis-cache:
+        condition: service_healthy
 
   mysql-db:
     image: mysql
@@ -16,10 +18,18 @@ services:
       MYSQL_DATABASE: project_movie
     volumes:
       - ./database:/var/lib/mysql
-      - ./ddl.sql:/docker-entrypoint-initdb.d/ddl.sql:ro
     ports:
       - 3306:3306
     healthcheck:
       test: ["CMD", "mysqladmin", "ping"]
-      interval: 10s
+      interval: 5s
+      retries: 5
+
+  redis-cache:
+    image: redis
+    ports:
+      - 6379:6379
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
       retries: 5
