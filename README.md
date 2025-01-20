@@ -2,7 +2,7 @@
 <br>
 
 
-## 1. Common 모듈 (`common`)
+## 1. Common 모듈 
 ### **목적**
 - 프로젝트 전체에서 공통적으로 사용되는 기능 및 클래스 관리.
 - 전역적으로 사용되는 예외 처리와 공통 유틸리티 제공.
@@ -14,7 +14,7 @@
 
 ---
 
-## 2. API 모듈 (`api`)
+## 2. API 모듈 
 ### **목적**
 - 외부 세계와의 직접적인 통신을 담당함.
 - 주로 컨트롤러 레이어와 관련된 역할 수행.
@@ -27,7 +27,7 @@
 
 ---
 
-## 3. Application 모듈 (`application`)
+## 3. Application 모듈 
 ### **목적**
 - 비즈니스 로직을 처리하는 서비스 레이어.
 - 도메인 로직과 외부 인터페이스 간의 연결을 담당.
@@ -39,7 +39,7 @@
 
 ---
 
-## 4. Domain 모듈 (`domain`)
+## 4. Domain 모듈 
 ### **목적**
 - 프로젝트 도메인 및 엔티티 관리.
 - 애플리케이션의 주요 비즈니스 규칙을 정의.
@@ -51,7 +51,7 @@
 
 ---
 
-## 5. Infrastructure 모듈 (`infrastructure`)
+## 5. Infrastructure 모듈 
 ### **목적**
 - 데이터베이스 및 JPA 관련 설정과 구현을 담당.
 - 외부 시스템(데이터베이스, 메시징 등)과의 상호작용 관리.
@@ -82,9 +82,18 @@ project-movie/
 docker compose up -d
 ```
 
-#### 조회하는 날짜를 기준으로 상영 중인 영화 상세 조회
+#### 조회하는 날짜를 기준으로 상영 중인 영화 상세 조회 및 검색
+- 상영관: 50개
+- 영화: 500개
+- 상영시간: 10,000개
 ```
-curl -x GET http://localhost:8080/api/v1/movie
+curl -x GET http://localhost:8080/api/v3/movie
+```
+```
+curl -x GET http://localhost:8080/api/v3/movie?title=5
+```
+```
+curl -x GET http://localhost:8080/api/v3/movie?title=9&genre=ANIMATION
 ```
 
 또는, <br>
