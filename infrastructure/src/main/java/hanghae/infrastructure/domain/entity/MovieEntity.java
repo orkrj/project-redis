@@ -10,7 +10,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Entity
@@ -40,7 +42,7 @@ public class MovieEntity extends BaseEntity {
     private Genre genre;
 
     @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ShowtimeEntity> showtime = new ArrayList<>();
+    private Set<ShowtimeEntity> showtime = new HashSet<>();
 
     @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<MovieTheaterEntity> movieTheater = new ArrayList<>();
@@ -55,6 +57,7 @@ public class MovieEntity extends BaseEntity {
                 .thumbnailUrl(movieEntity.getThumbnailUrl())
                 .runningTime(movieEntity.getRunningTime())
                 .genre(movieEntity.getGenre())
+                .showtime(ShowtimeEntity.toShowtimeDomainList(movieEntity.getShowtime()))
                 .build();
     }
 

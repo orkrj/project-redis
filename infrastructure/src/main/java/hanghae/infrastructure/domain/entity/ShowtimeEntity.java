@@ -10,8 +10,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Entity
@@ -33,7 +34,7 @@ public class ShowtimeEntity {
     private MovieEntity movie;
 
     @OneToMany(mappedBy = "showtime", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<TheaterShowtimeEntity> theaterShowtime = new ArrayList<>();
+    private Set<TheaterShowtimeEntity> theaterShowtime = new HashSet<>();
 
     // TODO mapstruct 사용하자 -> 엔티티에서 정적 팩토리 메서드 사용하니까 이름이 직관적이지 않음
     public static Showtime showtimeDomainOf(
@@ -45,6 +46,25 @@ public class ShowtimeEntity {
                 .schedule(showtimeEntity.getSchedule())
                 .movie(movie)
                 .theaters(theaters)
+                .build();
+    }
+
+    public static List<Showtime> toShowtimeDomainList(Set<ShowtimeEntity> showtimeList) {
+        return showtimeList.stream()
+                .map(ShowtimeEntity::toShowtimeDomain)
+                .toList();
+    }
+
+    public static Showtime toShowtimeDomain(ShowtimeEntity showtimeEntity) {
+        return Showtime.builder()
+                .schedule(showtimeEntity.getSchedule())
+                .theaters(
+                        showtimeEntity.getTheaterShowtime()
+                                .stream()
+                                .map(TheaterShowtimeEntity::getTheater)
+                                .map(TheaterEntity::toTheaterDomain)
+                                .toList()
+                )
                 .build();
     }
 }

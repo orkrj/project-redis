@@ -9,6 +9,6 @@ public abstract class ReleaseDateMixin {
 
     @JsonCreator
     public ReleaseDateMixin(
-            @JsonProperty("date")LocalDate date
+            @JsonProperty("date") LocalDate date
     ) {}
 }
