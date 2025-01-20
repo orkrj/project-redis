@@ -18,7 +18,7 @@ public interface JpaMovieRepositoryV2 extends JpaRepository<MovieEntity, Long> {
             LEFT JOIN FETCH ts.theater t
             WHERE m.releaseDate <= :now
             AND (m.deletedAt IS NULL OR m.deletedAt > :now)
-            ORDER BY m.releaseDate DESC, s.schedule ASC
+            ORDER BY m.releaseDate DESC
     """)
     Optional<List<MovieEntity>> findMoviesPlayingV2(@Param("now") LocalDateTime now);
 }

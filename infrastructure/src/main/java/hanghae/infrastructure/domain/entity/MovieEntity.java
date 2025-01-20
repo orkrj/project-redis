@@ -41,6 +41,7 @@ public class MovieEntity extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private Genre genre;
 
+    @OrderBy("schedule ASC")
     @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<ShowtimeEntity> showtime = new HashSet<>();
 
