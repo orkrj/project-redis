@@ -2,6 +2,8 @@ package hanghae.api.adapter;
 
 import hanghae.application.dto.MovieResponse;
 import hanghae.application.port.MovieServiceV3;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Max;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,8 +22,8 @@ public class MovieControllerV3 {
 
     @GetMapping
     public ResponseEntity<List<MovieResponse>> getMoviesPlaying(
-            @RequestParam(required = false) String title,
-            @RequestParam(required = false) String genre
+            @Valid @RequestParam(required = false) @Max(30) String title,
+            @Valid @RequestParam(required = false) @Max(10) String genre
     ) {
         return ResponseEntity.ok(movieService.findMoviesPlayingWithFilters(title, genre));
     }
