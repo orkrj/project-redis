@@ -7,6 +7,8 @@ import hanghae.domain.port.MovieRepositoryV3;
 import hanghae.domain.types.movie.Genre;
 import hanghae.infrastructure.domain.entity.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
@@ -19,6 +21,11 @@ public class JpaMovieRepositoryV3Adapter implements MovieRepositoryV3 {
     private final JPAQueryFactory queryFactory;
 
     @Override
+    // TODO 아직 캐시 설정 마무리하지 않음
+    @Cacheable(
+            cacheNames = "findMoviesPlaying",
+            key = "#now.toLocalDate() + '::' + (#title ?: '') + '::' + (#genre ?: '')"
+    )
     public List<Movie> findMoviesPlayingWithFilters(
             LocalDateTime now,
             String title,
@@ -62,4 +69,7 @@ public class JpaMovieRepositoryV3Adapter implements MovieRepositoryV3 {
                 .map(MovieEntity::toMovieDomain)
                 .toList();
     }
+
+    @CacheEvict(cacheNames = "findMoviesPlaying", allEntries = true)
+    public void clearCache() {}
 }
